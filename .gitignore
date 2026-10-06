@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+android/
+ios/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+server/.env
+google-services.json
+GoogleService-Info.plist
+*serviceAccount*.json
+*firebaseAdminCredentials*.json
+*.pem
+*.p8
+*-debug.log

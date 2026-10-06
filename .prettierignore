@@ -1,0 +1,5 @@
+node_modules
+server/dist
+package-lock.json
+*-debug.log
+.expo

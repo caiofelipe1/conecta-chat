@@ -1,0 +1,11 @@
+node_modules
+.git
+.env
+server/.env
+google-services.json
+GoogleService-Info.plist
+android
+ios
+server/dist
+docs
+tests

@@ -1,0 +1,17 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "streams": {
+      "$conversationId": {
+        "access": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider === 'password' && data.child('memberIds').child(auth.uid).val() === true"
+        },
+        "messages": {
+          ".read": "auth != null && auth.token.firebase.sign_in_provider === 'password' && root.child('streams').child($conversationId).child('access/state').val() === 'active' && root.child('streams').child($conversationId).child('access/memberIds').child(auth.uid).val() === true",
+          ".indexOn": ["createdAt"]
+        }
+      }
+    }
+  }
+}

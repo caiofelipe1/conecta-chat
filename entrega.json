@@ -1,0 +1,22 @@
+{
+  "repositoryUrl": "https://github.com/caiofelipe1/conecta-chat",
+  "apiUrl": "PENDENTE",
+  "integrantes": [
+    { "nome": "Augusto Barcelos Barros", "rm": "RM565065" },
+    { "nome": "Caio Felipe de Lima Bezerra", "rm": "RM556197" },
+    { "nome": "Juan Francisco Alves Muradas", "rm": "RM555541" },
+    { "nome": "Lucas Derenze Simidu", "rm": "RM555931" },
+    { "nome": "Sofia Fernandes", "rm": "RM554873" }
+  ],
+  "evidencias": {
+    "login": "docs/evidencias/login.png",
+    "cadastro": "docs/evidencias/cadastro.png",
+    "conversas": "docs/evidencias/conversas.png",
+    "usuarios": "docs/evidencias/usuarios.png",
+    "grupo": "docs/evidencias/grupo.png",
+    "chat": "docs/evidencias/chat.png",
+    "perfil": "docs/evidencias/perfil.png",
+    "pushAndroid": "docs/evidencias/push-android.png",
+    "pushIos": "docs/evidencias/push-ios.png"
+  }
+}
