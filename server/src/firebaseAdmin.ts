@@ -1,4 +1,4 @@
-import { cert, getApps, initializeApp } from 'firebase-admin/app';
+import { applicationDefault, cert, getApps, initializeApp } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { getDatabase } from 'firebase-admin/database';
@@ -12,15 +12,22 @@ export function createFirebaseServices() {
     throw new Error('Configure FIREBASE_PROJECT_ID e FIREBASE_DATABASE_URL.');
   const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  if (!emulator && (!clientEmail || !privateKey))
-    throw new Error('Configure a credencial administrativa exclusivamente no servidor.');
+  const credentialFile = process.env.GOOGLE_APPLICATION_CREDENTIALS?.trim();
+  if (!emulator && !credentialFile && (!clientEmail || !privateKey))
+    throw new Error('Configure o arquivo secreto GOOGLE_APPLICATION_CREDENTIALS ou as credenciais administrativas no servidor.');
   const app =
     getApps()[0] ??
     initializeApp({
       projectId,
       databaseURL,
       storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-      ...(emulator ? {} : { credential: cert({ projectId, clientEmail, privateKey }) }),
+      ...(emulator
+        ? {}
+        : {
+            credential: credentialFile
+              ? applicationDefault()
+              : cert({ projectId, clientEmail, privateKey }),
+          }),
     });
   return {
     auth: getAuth(app),
